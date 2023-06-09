@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -21,6 +23,11 @@ public class Program {
 		Date hojeDate =  new Date();
 		
 		Seller sel = new Seller(1, "Teste", "Teste@teste.com", birtDate, 4900.00, obj);
+		
+		SellerDao sellerDao = DaoFactory.createSellerDao();
+		
+		
+		
 		System.out.println(sel);
 
 	}
