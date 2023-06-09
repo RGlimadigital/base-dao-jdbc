@@ -20,15 +20,15 @@ public class Program {
 		
 		Date birtDate = formatter.parse("08-08-1988");
 		
-		Date hojeDate =  new Date();
-		
 		Seller sel = new Seller(1, "Teste", "Teste@teste.com", birtDate, 4900.00, obj);
 		
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
+		Seller seller = sellerDao.findById(1);
 		
 		
-		System.out.println(sel);
+		
+		System.out.println(seller);
 
 	}
 
