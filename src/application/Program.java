@@ -1,8 +1,8 @@
 package application;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -13,22 +13,24 @@ public class Program {
 
 	public static void main(String[] args) throws ParseException {
 		
-		Department obj = new Department(01, "Electronics");
-		System.out.println(obj);
+		Scanner sc = new Scanner(System.in);
 		
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-		
-		Date birtDate = formatter.parse("08-08-1988");
-		
-		Seller sel = new Seller(1, "Teste", "Teste@teste.com", birtDate, 4900.00, obj);
-		
+		System.out.println("=== TESTE 1: seller findById ===" );
+		System.out.println("Insira o Id do vendedor: ");
+		int sellerId = sc.nextInt();
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 		
-		Seller seller = sellerDao.findById(1);
-		
-		
-		
+		Seller seller = sellerDao.findById(sellerId);
 		System.out.println(seller);
+		
+		Department department = new Department(4, null);
+		
+		System.out.println("\n=== TESTE 2: seller find By Department Id ===" );
+		List<Seller> list = sellerDao.findByDepId(department);
+		
+		for(Seller ls : list) {
+			System.out.println(ls);
+		}
 
 	}
 
